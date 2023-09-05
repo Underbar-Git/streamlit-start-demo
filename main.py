@@ -44,6 +44,7 @@ df.set_index("time", inplace=True)
 
 st.write('---')
 st.title('서울시 온도')
+st.text('from. https://open-meteo.com')
 st.line_chart(df)
 
 redirect_button("https://toss.me/underbars","클릭하여 후원 감사합니다 🩵")
