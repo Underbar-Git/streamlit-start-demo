@@ -33,5 +33,6 @@ df["time"] = pd.to_datetime(df["time"])
 df.set_index("time", inplace=True)
 
 st.dataframe(df)
+st.line_chart(df)
 
 redirect_button("https://toss.me/underbars","후원 감사합니다 🩵")
