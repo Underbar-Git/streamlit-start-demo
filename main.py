@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import requests
 
 def redirect_button(url: str, text: str= None, color="#FD504D"):
     st.markdown(
@@ -22,6 +24,10 @@ st.write('''
 # Streamlit Start Demo
 Hello World!
 ''')
+
+res = requests.get('https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&hourly=temperature_2m&past_days=2&forecast_days=3')
+st.json(res.json())
+
 
 
 redirect_button("https://toss.me/underbars","후원 감사합니다 🩵")
