@@ -32,7 +32,8 @@ df = pd.DataFrame(data["hourly"])
 df["time"] = pd.to_datetime(df["time"])
 df.set_index("time", inplace=True)
 
-st.dataframe(df)
+st.write('---')
+st.title('서울시 온도')
 st.line_chart(df)
 
 redirect_button("https://toss.me/underbars","후원 감사합니다 🩵")
