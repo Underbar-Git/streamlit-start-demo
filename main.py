@@ -2,6 +2,16 @@ import streamlit as st
 import pandas as pd
 import requests
 
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            div.embeddedAppMetaInfoBar_container__DxxL1 {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
 def redirect_button(url: str, text: str= None, color="#FD504D"):
     st.markdown(
     f"""
