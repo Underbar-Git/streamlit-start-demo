@@ -28,6 +28,7 @@ Hello World!
 res = requests.get('https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&hourly=temperature_2m&past_days=2&forecast_days=3')
 st.json(res.json())
 
-
+df = pd.DataFrame(res.json(), columns=['time', 'temperature_2m'])
+st.dataframe(df)
 
 redirect_button("https://toss.me/underbars","후원 감사합니다 🩵")
