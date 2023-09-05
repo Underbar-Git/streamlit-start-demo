@@ -24,4 +24,4 @@ Hello World!
 ''')
 
 
-redirect_button("https://toss.me/underbars","후원은 사랑입니다 ❤️")
+redirect_button("https://toss.me/underbars","후원 감사합니다 🩵")
