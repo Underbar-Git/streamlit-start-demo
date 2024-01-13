@@ -1,6 +1,9 @@
 import streamlit as st
-import pandas as pd
+from rembg import remove 
+from duckduckgo_search import DDGS
 import requests
+from PIL import Image
+
 
 hide_st_style = """
             <style>
@@ -30,21 +33,48 @@ def redirect_button(url: str, text: str= None, color="#FD504D"):
     unsafe_allow_html=True
     )
     
+def get_images(keyword, count=3):
+    res = []
+    with DDGS() as ddgs:
+        keywords = keyword
+        ddgs_images_gen = ddgs.images(
+            keywords,
+            region="wt-wt",
+            safesearch="off",
+            size=None,
+            color=None,
+            type_image=None,
+            layout=None,
+            license_image=None,
+            max_results=count,
+        )
+        for r in ddgs_images_gen:
+            res.append(r)
+    return res
+
 st.write('''
 # Streamlit Start Demo
-Hello World!
+검색어를 통해 이미지를 찾고, 이미지에 배경을 지워보자. 
 ''')
 
-res = requests.get('https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&hourly=temperature_2m&past_days=2&forecast_days=3')
-data = res.json()
+search_word = st.text_input('검색어를 입력하세요.', 'IU')
+count = st.selectbox(
+    '몇개의 결과를 보실래요?',
+    (1, 3, 5))
+if search_word:
+    col1, col2 = st.columns(2)
+    find_images = get_images(search_word, count)
+    for find in find_images:
+        with col1:
+            st.image(find['image'], caption=f'출처 : {find["title"]}')
+        
+        with col2:
+            # 이미지를 다운로드합니다.
+            response = requests.get(find['image'], stream=True)
 
-df = pd.DataFrame(data["hourly"])
-df["time"] = pd.to_datetime(df["time"])
-df.set_index("time", inplace=True)
-
-st.write('---')
-st.title('서울시 온도')
-st.text('from. https://open-meteo.com')
-st.line_chart(df)
+            # 이미지를 Pillow Image로 로드합니다.
+            image = Image.open(response.raw)
+            rembg_image = remove(image)
+            st.image(rembg_image, caption='Remove Background')
 
 redirect_button("https://toss.me/underbars","클릭하여 후원 감사합니다 🩵")
