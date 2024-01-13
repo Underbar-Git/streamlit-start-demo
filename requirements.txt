@@ -1,3 +1,5 @@
 rembg
 requests
 duckduckgo-search
+streamlit
+pillow
