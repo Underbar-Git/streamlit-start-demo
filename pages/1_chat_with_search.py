@@ -29,7 +29,7 @@ Helpful Answer:
 
 def web_search(q):
     with DDGS() as ddgs:
-        results = [r for r in ddgs.text(q, region="ko-ko", max_results=1000)]
+        results = [r for r in ddgs.text(q, region="ko-ko", max_results=30)]
     return results
 
 if 'generated' not in st.session_state:
