@@ -33,10 +33,10 @@ def web_search(q):
     return results
 
 if 'generated' not in st.session_state:
-    st.session_state['generated'] = ["I'm HugChat, How may I help you?"]
+    st.session_state['generated'] = ["안녕? 나는 잼민이야. 뭘 도와줄까?"]
 
 if 'past' not in st.session_state:
-    st.session_state['past'] = ['Hi!']
+    st.session_state['past'] = ['똑똑!']
     
 # Layout of input/response containers
 
