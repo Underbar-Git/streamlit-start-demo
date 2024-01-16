@@ -7,7 +7,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 import requests
-GOOGLE_API_KEY = "AIzaSyA10EDo80sAY2XoQsY_KoU_IgbBdcKX5yg"
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 from langchain_google_genai import ChatGoogleGenerativeAI
 from google import generativeai as genai
 from langchain.chains import ConversationalRetrievalChain
