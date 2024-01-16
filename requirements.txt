@@ -4,3 +4,6 @@ duckduckgo-search
 streamlit
 streamlit-chat
 pillow
+langchain
+sentence-transformers
+langchain-google-genai
