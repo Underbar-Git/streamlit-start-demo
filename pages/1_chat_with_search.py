@@ -14,7 +14,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.prompts import PromptTemplate
 
 model_name = "jhgan/ko-sbert-nli"
-model_kwargs = {'device': 'mps'}
+model_kwargs = {"device": "cpu"}
 encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
 embeddings = HuggingFaceEmbeddings(
     model_name=model_name,
