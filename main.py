@@ -53,7 +53,7 @@ def get_images(keyword, count=3):
     return res
 
 st.write('''
-# Streamlit Start Demo
+# Streamlit Demo
 검색어를 통해 이미지를 찾고, 이미지에 배경을 지워보자. 
 ''')
 
