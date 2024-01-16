@@ -73,8 +73,11 @@ if search_word:
             response = requests.get(find['image'], stream=True)
 
             # 이미지를 Pillow Image로 로드합니다.
-            image = Image.open(response.raw)
-            rembg_image = remove(image)
-            st.image(rembg_image, caption='Remove Background')
+            try:
+                image = Image.open(response.raw)
+                rembg_image = remove(image)
+                st.image(rembg_image, caption='Remove Background')
+            except:
+                st.write('Oooops. ')
 
 redirect_button("https://toss.me/underbars","클릭하여 후원 감사합니다 🩵")
